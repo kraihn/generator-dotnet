@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Jared Dickson",
+      "authorEmail": "code@jareddickson.com",
+      "authorUrl": "https://www.jareddickson.com"
+    }
+  }
+}
