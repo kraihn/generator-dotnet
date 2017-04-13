@@ -4,33 +4,33 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 
 module.exports = class extends Generator {
-  prompting() {
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the amazing ' + chalk.red('generator-dotnet') + ' generator!'
-    ));
-
-    const prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    });
+  constructor(args, opts) {
+    super(args, opts);
+    this.argument('name', {require: true});
+    this.option('directory', {default: 'REPLACE_ME', alias: 'dir', type: String});
   }
 
   writing() {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
-  }
+    const directoryName = this.options.directory === 'REPLACE_ME' ? this.options.name : this.options.directory;
 
-  install() {
-    this.installDependencies();
+    this.composeWith(require.resolve('../solution'), {
+      directory: directoryName,
+      arguments: [this.options.name]
+    });
+    this.composeWith('dotnet:webapi', {
+      directory: directoryName + '/src'
+    });
+    this.composeWith('dotnet:classlib', {
+      directory: directoryName + '/src',
+      arguments: ['Domain']
+    });
+    this.composeWith('dotnet:classlib', {
+      directory: directoryName + '/src',
+      arguments: ['IoC']
+    });
+    this.composeWith('dotnet:xunit', {
+      directory: directoryName + '/test',
+      arguments: ['UnitTests']
+    });
   }
 };
