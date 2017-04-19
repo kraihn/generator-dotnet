@@ -7,13 +7,13 @@ First, install [Yeoman](http://yeoman.io) and generator-dotnet using [npm](https
 
 ```bash
 npm install -g yo
-npm install -g generator-dotnet
+npm install -g @kraihn/generator-dotnet
 ```
 
 Then generate your new project:
 
 ```bash
-yo dotnet
+yo @kraihn/dotnet
 ```
 
 ## Getting To Know Yeoman
@@ -28,8 +28,8 @@ yo dotnet
 Apache-2.0 © [Jared Dickson](https://www.jareddickson.com)
 
 
-[npm-image]: https://badge.fury.io/js/generator-dotnet.svg
-[npm-url]: https://npmjs.org/package/generator-dotnet
+[npm-image]: https://badge.fury.io/js/%40kraihn%2Fgenerator-dotnet.svg
+[npm-url]: https://npmjs.org/package/@kraihn/generator-dotnet
 [travis-image]: https://travis-ci.org/kraihn/generator-dotnet.svg?branch=master
 [travis-url]: https://travis-ci.org/kraihn/generator-dotnet
 [daviddm-image]: https://david-dm.org/kraihn/generator-dotnet.svg?theme=shields.io
