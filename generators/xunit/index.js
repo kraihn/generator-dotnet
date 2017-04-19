@@ -14,5 +14,10 @@ module.exports = class extends Generator {
       this.templatePath('xunit.csproj'),
       this.destinationPath([this.options.directory, vsproj(this.options.name), vsproj(this.options.name) + '.csproj'].join('/'))
     );
+    this.fs.copyTpl(
+      this.templatePath('UnitTest1.cs'),
+      this.destinationPath([this.options.directory, vsproj(this.options.name), 'UnitTest1.cs'].join('/')),
+      {namespace: vsproj(this.options.name)}
+    );
   }
 };

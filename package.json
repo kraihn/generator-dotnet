@@ -53,6 +53,7 @@
     "postscaffold:classlib": "node scripts/templatize-classlib.js",
     "prescaffold:xunit": "rimraf generators/xunit/templates",
     "scaffold:xunit": "dotnet new xunit --name xunit --output generators/xunit/templates",
+    "postscaffold:xunit": "node scripts/templatize-xunit.js",
     "prescaffold:solution": "rimraf generators/solution/templates",
     "scaffold:solution": "dotnet new sln --name solution --output generators/solution/templates"
   },
