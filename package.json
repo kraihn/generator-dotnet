@@ -23,6 +23,7 @@
     "jest": "^19.0.2",
     "jest-cli": "^19.0.1",
     "nsp": "^2.6.3",
+    "rimraf": "^2.6.1",
     "yeoman-assert": "^3.0.0",
     "yeoman-test": "^1.6.0"
   },
@@ -43,10 +44,16 @@
     "prepublish": "nsp check",
     "pretest": "eslint . --fix",
     "test": "jest",
-    "scaffold:webapi": "dotnet new webapi --name WebApi --output tmp/webapi",
-    "scaffold:classlib": "dotnet new classlib --name Lib --output tmp/classlib",
-    "scaffold:xunit": "dotnet new xunit --name Tests --output tmp/xunit",
-    "scaffold:solution": "dotnet new sln --name Tmp --output tmp/solution"
+    "scaffold:dotnet": "npm run scaffold:solution && npm run scaffold:webapi && npm run scaffold:classlib && npm run scaffold:xunit",
+    "prescaffold:webapi": "rimraf generators/webapi/templates",
+    "scaffold:webapi": "dotnet new webapi --name webapi --output generators/webapi/templates",
+    "postscaffold:webapi": "node scripts/templatize-webapi.js",
+    "prescaffold:classlib": "rimraf generators/classlib/templates",
+    "scaffold:classlib": "dotnet new classlib --name classlib --output generators/classlib/templates",
+    "prescaffold:xunit": "rimraf generators/xunit/templates",
+    "scaffold:xunit": "dotnet new xunit --name xunit --output generators/xunit/templates",
+    "prescaffold:solution": "rimraf generators/solution/templates",
+    "scaffold:solution": "dotnet new sln --name solution --output generators/solution/templates"
   },
   "eslintConfig": {
     "extends": "xo-space",
