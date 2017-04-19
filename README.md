@@ -7,13 +7,13 @@ First, install [Yeoman](http://yeoman.io) and generator-dotnet using [npm](https
 
 ```bash
 npm install -g yo
-npm install -g generator-dotnet
+npm install -g @kraihn/generator-dotnet
 ```
 
 Then generate your new project:
 
 ```bash
-yo dotnet
+yo @kraihn/dotnet
 ```
 
 ## Getting To Know Yeoman
