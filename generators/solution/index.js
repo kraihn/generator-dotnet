@@ -7,6 +7,7 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
     this.argument('name', {require: true});
+    this.argument('projects', {default: [], require: false, type: Array});
     this.option('directory', {default: '.', alias: 'dir', type: String});
   }
 
@@ -15,14 +16,14 @@ module.exports = class extends Generator {
       this.templatePath('solution.sln'),
       this.destinationPath([this.options.directory, vsproj(this.options.name) + '.sln'].join('/')),
       {
-        projects: [
-          {
-            name: 'WebApi',
-            path: 'src\\WebApi\\WebApi.csproj',
-            uuid: uuid.v4().toUpperCase(),
-            buildId: uuid.v4().toUpperCase()
-          }
-        ]
+        projects: this.options.projects.map(function (project) {
+          return {
+            name: project.split(':')[0],
+            path: project.split(':')[1],
+            buildId: uuid.v1().toUpperCase()
+          };
+        }),
+        solutionId: '9A19103F-16F7-4668-BE54-9A1E7A4F7556'
       }
     );
   }
