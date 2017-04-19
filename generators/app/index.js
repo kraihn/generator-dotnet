@@ -17,6 +17,9 @@ module.exports = class extends Generator {
       directory: directoryName,
       arguments: [this.options.name]
     });
+    this.composeWith('dotnet:docker', {
+      directory: directoryName,
+    });
     this.composeWith('dotnet:webapi', {
       directory: directoryName + '/src'
     });

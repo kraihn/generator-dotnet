@@ -1,0 +1,49 @@
+# Bin and Obj Directories#
+##########################
+[Bb]in
+[Bb]in/*
+[Oo]bj
+[Oo]bj/*
+
+# Other Solution Files #
+########################
+*.userprefs
+*.user
+*.suo
+project.lock.json
+
+# IDE files
+########################
+.idea
+.settings
+.vscode
+.vs
+node_modules
+bower_components
+tmp
+generators
+
+# Nuget packages folder
+########################
+packages
+packages/*
+
+# Other Misc Files #
+####################
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# source control
+.git
+.gitignore
+
+# Docker
+.dockerignore
+Dockerfile
+.env
+
+# Previous build
+coverage
+dist
