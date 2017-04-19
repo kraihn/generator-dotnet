@@ -12,11 +12,6 @@ module.exports = class extends Generator {
 
   writing() {
     this.fs.copyTpl(
-      this.templatePath('Controllers/BaseController.cs'),
-      this.destinationPath([this.options.directory, vsproj(this.options.name), 'Controllers', 'BaseController.cs'].join('/')),
-      {namespace: vsproj(this.options.name)}
-    );
-    this.fs.copyTpl(
       this.templatePath('Controllers/ValuesController.cs'),
       this.destinationPath([this.options.directory, vsproj(this.options.name), 'Controllers', 'ValuesController.cs'].join('/')),
       {namespace: vsproj(this.options.name)}
