@@ -20,7 +20,7 @@ module.exports = class extends Generator {
           return {
             name: project.split(':')[0],
             path: project.split(':')[1],
-            buildId: uuid.v1().toUpperCase()
+            buildId: uuid.v4().toUpperCase()
           };
         }),
         solutionId: '9A19103F-16F7-4668-BE54-9A1E7A4F7556'
