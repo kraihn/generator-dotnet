@@ -24,7 +24,7 @@ module.exports = class extends Generator {
         'UnitTests:test\\UnitTests\\UnitTests.csproj']
     });
     this.composeWith('dotnet:docker', {
-      directory: directoryName,
+      directory: directoryName
     });
     this.composeWith('dotnet:webapi', {
       directory: directoryName + '/src'
@@ -32,7 +32,7 @@ module.exports = class extends Generator {
     this.composeWith('dotnet:classlib', {
       directory: directoryName + '/src',
       arguments: ['Models']
-    })
+    });
     this.composeWith('dotnet:classlib', {
       directory: directoryName + '/src',
       arguments: ['Services']
