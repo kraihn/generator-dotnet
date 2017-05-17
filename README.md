@@ -25,7 +25,7 @@ yo @kraihn/dotnet
 
 ## License
 
-Apache-2.0 © [Jared Dickson](https://www.jareddickson.com)
+MIT © [Jared Dickson](https://www.jareddickson.com)
 
 
 [npm-image]: https://badge.fury.io/js/%40kraihn%2Fgenerator-dotnet.svg

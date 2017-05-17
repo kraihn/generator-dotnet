@@ -1,6 +1,6 @@
 {
   "name": "@kraihn/generator-dotnet",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "homepage": "",
   "author": {
@@ -65,5 +65,5 @@
     }
   },
   "repository": "kraihn/generator-dotnet",
-  "license": "Apache-2.0"
+  "license": "MIT"
 }
