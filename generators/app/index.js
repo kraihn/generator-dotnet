@@ -11,7 +11,7 @@ module.exports = class extends Generator {
   writing() {
     const directoryName = this.options.directory === 'REPLACE_ME' ? this.options.name : this.options.directory;
 
-    this.composeWith(require.resolve('../solution'), {
+    this.composeWith('dotnet:solution', {
       directory: directoryName,
       arguments: [
         this.options.name,

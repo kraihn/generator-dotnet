@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
+<% if (includeSwagger) { %>using Swashbuckle.AspNetCore.Swagger;<% } %>
+
 namespace <%= namespace %>
 {
     public class Startup
@@ -29,6 +31,7 @@ namespace <%= namespace %>
         {
             // Add framework services.
             services.AddMvc();
+            <% if (includeSwagger) { %>services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new Info { Title = "API", Version = "v1" }); c.DescribeAllEnumsAsStrings(); });<% } %>
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +41,8 @@ namespace <%= namespace %>
             loggerFactory.AddDebug();
 
             app.UseMvc();
+            <% if (includeSwagger) { %>app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "API"); });<% } %>
         }
     }
 }

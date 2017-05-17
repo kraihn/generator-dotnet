@@ -10,6 +10,20 @@ module.exports = class extends Generator {
     this.option('directory', {default: 'src', alias: 'dir', type: String});
   }
 
+  prompting() {
+    const prompts = [{
+      type: 'confirm',
+      name: 'includeSwagger',
+      message: 'Would you like to use Swagger?',
+      default: false
+    }];
+
+    return this.prompt(prompts).then(props => {
+      // To access props later use this.props.someAnswer;
+      this.props = props;
+    });
+  }
+
   writing() {
     this.fs.copyTpl(
       this.templatePath('Controllers/ValuesController.cs'),
@@ -36,12 +50,13 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('Startup.cs'),
       this.destinationPath([this.options.directory, vsproj(this.options.name), 'Startup.cs'].join('/')),
-      {namespace: vsproj(this.options.name)}
+      {namespace: vsproj(this.options.name), includeSwagger: this.props.includeSwagger}
     );
 
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('webapi.csproj'),
-      this.destinationPath([this.options.directory, vsproj(this.options.name), vsproj(this.options.name) + '.csproj'].join('/'))
+      this.destinationPath([this.options.directory, vsproj(this.options.name), vsproj(this.options.name) + '.csproj'].join('/')),
+      {includeSwagger: this.props.includeSwagger}
     );
   }
 };
